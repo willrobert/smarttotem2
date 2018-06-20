@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Simple AI Chat Bot Demo with Web Speech API">
+    <meta name="author" content="Tomomi Imura  @girlie_mac">
+
+    <title>Smart Totem</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+    <section id="textos">
+       <h1>Smart Totem</h1>
+      <h2>Um guia para a comunidade UFAM!</h2> 
+
+      <button id="micBtn"><i class="fa fa-microphone"></i></button>      
+      <p>Pressione o botão e fale sua duvida</p>
+      <div>
+          <p>Você: <em class="output-you">...</em></p>
+          <p>Smart Totem: <em class="output-bot">...</em></p>
+      </div>
+      <div>
+          <label>Ou digite sua mensagem aqui...</label>
+          <input id="mensagem"></section>
+          <button id="myBtn"><i class="fa fa-paper-plane"></i></button>
+             
+      </div>
+          
+      
+    </section>  
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
