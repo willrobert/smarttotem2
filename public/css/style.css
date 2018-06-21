@@ -19,6 +19,13 @@ footer {
   bottom: 1em;
   left: 1em;
 }
+.center {
+  margin: auto;
+  width: 60%;
+  border: 3px;
+  padding: 10px;
+}
+
 footer a {
   color: #f80;
 }
@@ -129,4 +136,27 @@ button:focus {
 }
 .fa-github::before {
     content: "\f09b";
+}
+
+#bot {
+  border-radius: 50px;
+  margin: 0 15px 10px;
+  padding: 15px 20px;
+  position: relative;
+  font-weight: bold;
+  background-color: #E5E4E9;
+  color: #363636;
+  margin-right: 100px;
+}
+
+#user {
+  border-radius: 50px;
+  margin: 0 15px 10px;
+  padding: 15px 20px;
+  position: relative;
+  font-weight: bold;
+  background-color: #2095FE;
+  color: #fff;
+  margin-left: 100px;
+  text-align: right;
 }

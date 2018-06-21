@@ -13,20 +13,18 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
 
-  <body>
+  <body class="center">
     <section id="textos">
        <h1>Smart Totem</h1>
       <h2>Um guia para a comunidade UFAM!</h2> 
 
       <button id="micBtn"><i class="fa fa-microphone"></i></button>      
       <p>Pressione o botão e fale sua duvida</p>
-      <div>
-          <p>Você: <em class="output-you">...</em></p>
-          <p>Smart Totem: <em class="output-bot">...</em></p>
-      </div>
-      <div>
+      <div>          
+          <p id="bot">Smart Totem: <em class="output-bot">...</em></p> 
+          <p id="user">Você: <em class="output-you">...</em></p>     
           <label>Ou digite sua mensagem aqui...</label>
-          <input id="mensagem"></section>
+          <input id="mensagem"></input>
           <button id="myBtn"><i class="fa fa-paper-plane"></i></button>
              
       </div>
