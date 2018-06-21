@@ -106,7 +106,7 @@ function synthVoice(text) {
 }
 
 socket.on('bot reply', function(replyText) {
-  synthVoice(replyText);
+  
 
   if(replyText == '') replyText = '(No answer...)';
   if(replyText.substring(0, 5) == 'local') {
@@ -115,11 +115,16 @@ socket.on('bot reply', function(replyText) {
     latitute = replyText.substring(6, replyText.indexOf(','));
     console.log(latitute);
 
-    longitude = replyText.substring(replyText.indexOf(',')+1,)
+    longitude = replyText.substring(replyText.indexOf(',')+1,replyText.lastIndexOf(':'));
     console.log(longitude);
-    goToMap();
-    
-  }
+
+    var local = replyText.substring(replyText.lastIndexOf(':')+1,);
+    console.log(longitude);
+    replyText = 'Aqui está ' + local; 
+    goToMap();    
+  }  
+  synthVoice(replyText);
+  
   outputBot.textContent = replyText;  
 });
 
