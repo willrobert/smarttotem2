@@ -76,8 +76,8 @@ section {
   display: block;
   -webkit-appearance: none;
   -moz-appearance: none;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border: 0;
   border-radius: 50%;
   padding: .7em 1em;
@@ -87,10 +87,11 @@ section {
   color: #FFFF;
   background: linear-gradient(180deg, #39C2C9 0%, #3FC8C9 80%, #3FC8C9 100%);
   box-shadow: 2px 5px 30px rgba(63, 200, 201, .4);
-  font-size: 15px;
+  font-size: 25px;
   text-shadow: 1px 2px 2px #2a8b90;
   will-change: transform, filter;
   transition: all 0.3s ease-out;
+  line-height: -50px;  
 }
 
 #textos {
@@ -99,7 +100,8 @@ section {
 #mensagem {
   background: linear-gradient(180deg, #e8e6e4 0%, #f2f3f4 80%, #e4e6e8 100%);
   box-shadow: 2px 5px 30px #eeeeee;
-  size: 30px
+  size: 50px;
+  font-size: 30px;
 }
 
 #micBtn .fa {
@@ -109,12 +111,6 @@ section {
   text-shadow: 1px 2px 2px #2a8b90;
 }
 
-#myBtn{
-  font-size: 30px;
-  line-height: -50px;
-  margin: 10;
-  text-shadow: 1px 2px 2px #2a8b90;
-}
 button:hover {
   transform: scale(.92);
 }
@@ -159,4 +155,16 @@ button:focus {
   color: #fff;
   margin-left: 100px;
   text-align: right;
+}
+
+h3 {
+  display: inline-block;
+  margin: 0;
+  margin: 40px center 10px;
+}
+
+#cam {
+  position: relative;
+  text-align: left;
+  margin: 50px -180px 10px;
 }

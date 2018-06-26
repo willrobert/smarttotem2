@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -11,25 +11,50 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
+
+
+    <style>
+      video, canvas{
+          position: absolute;
+          border: 1px solid blueviolet;
+      }
+  </style>
   </head>
+  <body>
+      <section id="cam">
+          <video id="video" width="256" height="192" preload autoplay loop muted></video>      
+          <canvas id="canvas" width="256" height="192"></canvas> 
+      </section>    
+  </body>
 
   <body class="center">
-    <section id="textos">
-       <h1>Smart Totem</h1>
-      <h2>Um guia para a comunidade UFAM!</h2> 
+    
+    
 
-      <button id="micBtn"><i class="fa fa-microphone"></i></button>      
+    <section id="textos">
+      <h1>Smart Totem</h1>
+      <h2>Um guia para a comunidade UFAM!</h2> 
+         
+      <button id="micBtn"><i class="fa fa-microphone"></i></button>  
       <p>Pressione o botão e fale sua duvida</p>
       <div>          
           <p id="bot">Smart Totem: <em class="output-bot">...</em></p> 
-          <p id="user">Você: <em class="output-you">...</em></p>     
-          <label>Ou digite sua mensagem aqui...</label>
-          <input id="mensagem"></input>
-          <button id="myBtn"><i class="fa fa-paper-plane"></i></button>
+          <p id="user">Você: <em class="output-you">...</em></p> 
+          
+          <h3>
+            <label>Ou digite sua mensagem aqui...</label>
+            <input id="mensagem"></input>
+            <button id="myBtn"><i class="fa fa-paper-plane"></i></button>
+          </h3>
+          
              
       </div>
-          
       
+      
+    
+    <script src="tracking-min.js"></script>
+    <script src="data/face-min.js"></script>
+   
     </section>  
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/script.js"></script>
