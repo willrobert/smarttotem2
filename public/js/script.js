@@ -142,7 +142,7 @@ function init(){
           context.lineWidth = 2
           context.strokeRect(rect.x, rect.y, rect.width, rect.height)
           socket.emit('chat message', 'oi');
-          return;
+          tracker.stop();
       });
       
   })

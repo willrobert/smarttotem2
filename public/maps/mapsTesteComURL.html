@@ -4,24 +4,91 @@
 		<title>Teste Google Maps</title>
 		<style>
 			*{
-				margin: 0;
-				padding: 0;
+				margin: 0%;
+				padding: 0%;
 			}
+			
 			
 			#map{
 				height: 500px;
 				width: 100%;
+				position: absolute;
 			}
+			
+			.btn {
+				background-color: #008CBA; /* Blue */
+				border: none;
+				color: white;
+				padding: 15% 32%;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: auto;
+				width: 100%;
+				margin-top: 15%;
+				-webkit-transition-duration: 0.4s; /* Safari */
+			}
+			.btn:hover {
+				background-color: white; /* Green */
+				color: #008CBA;;
+			}
+			
+			
+			.row{
+				position: relative;
+			}
+			
+			/* Create three equal columns that floats next to each other */
+			.column1 {
+				float: left;
+				/*position:absolute;*/
+				width: 10%;
+				padding: 2%;
+			}
+			.column2 {
+				float: left;
+				/*position:absolute;*/
+				width: 80%;
+				padding: 2%;
+			}
+
+			
 		</style>
 	</head>
 	
 	<body>
 	
-		<div id="map"></div>
-	
-    	<button type="submit" onclick="returnToPrevious()">Voltar</button>
+		<div class="row">
+			<div class="column1">
+				<img src="smarttotem_logo.jpeg" width="100%" height="100%">
+				
+				<button class="btn" onclick="pinToLocal()">
+					Onde estou?
+				</button>
+				
+				<button class="btn" onclick="pinToDestination()">
+					Destino
+				</button>
+				
+				<button class="btn" onclick="returnToPrevious()">
+					Voltar
+				</button>
+
+			</div>
+			
+			<div class="column2">
+				<div id="map"></div>
+			</div>
+			
+		
+		</div>	
 		
 		<script>
+		
+		var map; /*Global variable*/
+		
+		var user_location = {lat:-3.089652,lng:-59.963581};
+		var destination;
 
         function returnToPrevious(){
 			var url_string = document.URL;
@@ -29,6 +96,39 @@
 			var prev = url.searchParams.get("prev").toString();
             window.location = prev;
 
+        }
+        
+        function pinToLocal(){
+			map.panTo(user_location);
+			map.setZoom(16);
+        }
+        
+        function isThereDestination(){
+        	try{
+		    	var url_string = document.URL;
+				var url = new URL(url_string);
+        		if(!isNaN(parseFloat(url.searchParams.get("lat")))){
+        			if(!isNaN(parseFloat(url.searchParams.get("lng")))){
+        				return true;
+        			}
+        		}
+				
+				return false;
+        	}
+        	catch(err){
+        		return false;
+        	}
+        }
+        
+        function pinToDestination(){
+        	if(isThereDestination()){
+        		
+		    	map.panTo(destination);
+		    	map.setZoom(16);
+        	}
+        	else{
+        		pinToLocal();
+        	}
         }
 
 		function getCoordinates(place){
@@ -40,7 +140,7 @@
 			var lng_value = parseFloat(url.searchParams.get("lng"));
 
 			new_location = {lat: lat_value, lng: lng_value};
-
+			
 			return new_location;
 		}
 
@@ -48,15 +148,20 @@
 			//Ufam = {lat: -3.088473, lng:-59.964653};
 			//Amazon Bowling = -3.104471, -60.007536
 
-			var location = getCoordinates();
+			//set user location
 
-			var map_settings = {zoom:16,center:location};
-			var map = new google.maps.Map(
+			var map_settings = {zoom:16,center:user_location};
+			map = new google.maps.Map(
 				document.getElementById("map"),map_settings
 			);
-		
-			var marker_settings = {position: location, map:map};
+			
+			destination = getCoordinates();		
+			var marker_settings = {position: destination, map:map};
 			var marker = new google.maps.Marker(marker_settings);
+
+			//pin to map
+			var user_settings = {position:user_location, map:map, title:"You are here", icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'};
+			var user = new google.maps.Marker(user_settings);
 		}
 		//AIzaSyCYv5jRtD3doV0WxWRHf-utfGrLDs9_k00
 		</script>
