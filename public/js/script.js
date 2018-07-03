@@ -74,8 +74,7 @@ function goToMap(){
   //var lat = "-3.432243";
   //var lng = "-5.432432";
   var current_url = document.URL.toString();
-  console.log(current_url);
-  //var current_url = "oi";
+  console.log(current_url);  
 
   var url = "maps/mapsTesteComURL.html"
 
@@ -94,8 +93,12 @@ function goToMap(){
 
 function synthVoice(text) {
   const synth = window.speechSynthesis;
+  const voices = synth.getVoices();
   const utterance = new SpeechSynthesisUtterance();
-  utterance.text = text;
+  //console.log(voices);
+  utterance.voice = voices[14];  
+  utterance.text = text;  
+
   synth.speak(utterance);
 
   utterance.onend = function(event) {
@@ -128,21 +131,34 @@ socket.on('bot reply', function(replyText) {
   outputBot.textContent = replyText;  
 });
 
+var detections = 0;
+
 function init(){
   const video = document.getElementById('video')
   const canvas = document.getElementById('canvas')
   const context = canvas.getContext('2d')
   const tracker = new tracking.ObjectTracker('face')
+  
+  //tracker.setEdgesDensity(0.1);
   tracking.track('#video',tracker, {camera : true})
+  //const trackerTask = tracking.track('#video', tracker);
   tracker.on('track', event => {
       //console.log(event)
       context.clearRect(0,0,canvas.width, canvas.height)
       event.data.forEach(rect => {
-          context.strokeStyle = '#ff000'
+          context.strokeStyle = '#a64ceb'
           context.lineWidth = 2
           context.strokeRect(rect.x, rect.y, rect.width, rect.height)
-          socket.emit('chat message', 'oi');
-          tracker.stop();
+          context.font = '11px Helvetica';
+          context.fillStyle = "#fff";
+          detections ++;
+          console.log(detections);
+          if(detections == 3) {
+            socket.emit('chat message', 'oi');
+          }
+          //socket.emit('chat message', 'oi');
+          //tracker.stop();
+          //return;
       });
       
   })

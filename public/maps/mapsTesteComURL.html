@@ -10,8 +10,8 @@
 			
 			
 			#map{
-				height: 500px;
-				width: 100%;
+				height: 950px;
+				width: 1500px;
 				position: absolute;
 			}
 			
@@ -100,7 +100,7 @@
         
         function pinToLocal(){
 			map.panTo(user_location);
-			map.setZoom(16);
+			map.setZoom(18);
         }
         
         function isThereDestination(){
@@ -150,7 +150,7 @@
 
 			//set user location
 
-			var map_settings = {zoom:16,center:user_location};
+			var map_settings = {zoom:18,center:user_location};
 			map = new google.maps.Map(
 				document.getElementById("map"),map_settings
 			);
