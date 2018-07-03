@@ -19,6 +19,7 @@ recognition.maxAlternatives = 1;
 document.querySelector('button').addEventListener('click', () => {
   recognition.start();
   property.style.color = "#FF6347";
+  synth.cancel();
 });
 
 document.getElementById("myBtn").addEventListener("click", function(){
@@ -91,10 +92,13 @@ function goToMap(){
   //window.location = "mapsTesteComURL.html?lat=3&lng=-60";
 }
 
+const synth = window.speechSynthesis;
+const utterance = new SpeechSynthesisUtterance();
+
 function synthVoice(text) {
-  const synth = window.speechSynthesis;
-  const voices = synth.getVoices();
-  const utterance = new SpeechSynthesisUtterance();
+  //const synth = window.speechSynthesis;
+  //const voices = synth.getVoices();
+  //const utterance = new SpeechSynthesisUtterance();
   //console.log(voices);
   //utterance.voice = voices[14];  
   utterance.text = text;  
