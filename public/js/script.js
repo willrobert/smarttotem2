@@ -96,7 +96,7 @@ function synthVoice(text) {
   const voices = synth.getVoices();
   const utterance = new SpeechSynthesisUtterance();
   //console.log(voices);
-  utterance.voice = voices[14];  
+  //utterance.voice = voices[14];  
   utterance.text = text;  
 
   synth.speak(utterance);
@@ -152,7 +152,7 @@ function init(){
           context.font = '11px Helvetica';
           context.fillStyle = "#fff";
           detections ++;
-          console.log(detections);
+          //console.log(detections);
           if(detections == 3) {
             socket.emit('chat message', 'oi');
           }
