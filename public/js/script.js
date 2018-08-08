@@ -31,6 +31,11 @@ document.getElementById("myBtn").addEventListener("click", function(){
   }  
 });
 
+document.getElementById("refresh").addEventListener("click", function(){
+  location.reload();
+});
+
+
 txtfield.addEventListener("keyup", function(event) {
     event.preventDefault();
     if (event.keyCode === 13) {
